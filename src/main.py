@@ -4,9 +4,19 @@ import pygame, os, sys,random
 pygame.init()
 WIDTH, HEIGHT = 1280, 720
 FONT = pygame.font.SysFont('consolas',int(WIDTH/20))
+FULLSCREEN = pygame.display.set_mode((1920,1080))
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Pong!')
 CLOCK = pygame.time.Clock()
+
+
+# Full SCREEN
+def toggle_fullscreen():
+    pass
+
+
+
+
 
 # Paddles
 
@@ -24,6 +34,8 @@ while True:
 # Control/Action config
     key_pressed = pygame.key.get_pressed()
 
+    if key_pressed[pygame.K_ESCAPE]:
+           pass
     if key_pressed[pygame.K_UP]:
         if player.top > 0 :
             player.top -= 2
@@ -37,10 +49,14 @@ while True:
         if player.bottom < HEIGHT:
             player.bottom += 2
 
+
+
 # QUIT window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
+
+
     
 
 # ball and player config
@@ -96,7 +112,7 @@ while True:
     SCREEN.blit(player_score_text,(WIDTH/2+50,50))
     SCREEN.blit(opponent_score_text,(WIDTH/2-50,50))
 
-    icon_image = pygame.image.load('Pong\src\main.py')
+    icon_image = pygame.image.load('PaddleBashPygame/resources/Pong_icon.png')
     pygame.display.set_icon(icon_image)
 
     pygame.display.update()
